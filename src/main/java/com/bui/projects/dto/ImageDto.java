@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ImageDto {
 
-    private Integer id;
     @NotNull(message = "name shouldn't be null")
     private String name;
     @NotNull(message = "path shouldn't be null")

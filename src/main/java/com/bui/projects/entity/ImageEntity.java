@@ -13,6 +13,11 @@ import javax.persistence.*;
 @Table(name = "image")
 public class ImageEntity {
 
+    public ImageEntity(String name, String path) {
+        this.name = name;
+        this.path = path;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -13,6 +13,10 @@ import javax.persistence.*;
 @Table(name = "country")
 public class CountryEntity {
 
+    public CountryEntity(String countryName) {
+        this.name = countryName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

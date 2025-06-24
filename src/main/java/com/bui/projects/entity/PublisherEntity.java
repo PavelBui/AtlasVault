@@ -13,6 +13,10 @@ import javax.persistence.*;
 @Table(name = "publisher")
 public class PublisherEntity {
 
+    public PublisherEntity(String publisherName) {
+        this.name = publisherName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
