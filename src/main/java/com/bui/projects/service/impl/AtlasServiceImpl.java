@@ -1,5 +1,6 @@
 package com.bui.projects.service.impl;
 
+import com.bui.projects.dto.ImageDto;
 import com.bui.projects.entity.AtlasEntity;
 import com.bui.projects.exeption.AtlasNotFoundException;
 import com.bui.projects.service.AtlasService;
@@ -51,5 +52,10 @@ public class AtlasServiceImpl implements AtlasService {
         return atlasRepository.findAllByIsDeletedFalse().stream()
                 .map(entity -> atlasMapper.entityToDto(entity))
                 .toList();
+    }
+
+    @Override
+    public void uploadImage(Integer id, ImageDto imageDto) {
+
     }
 }

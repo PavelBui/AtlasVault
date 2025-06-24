@@ -38,9 +38,9 @@ REST API that allows to manage atlases.
     "time_period": "string",
     "description": "string",
     "class": "string",
-    "year": integer,
+    "year": "integer",
     "country": "string",
     "publisher": "string",
-    "circulation": integer
+    "circulation": "integer",
 }
 ```

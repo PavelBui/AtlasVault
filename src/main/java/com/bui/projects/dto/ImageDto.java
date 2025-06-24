@@ -17,4 +17,5 @@ public class ImageDto {
     private String name;
     @NotNull(message = "path shouldn't be null")
     private String path;
+    private byte[] imageBytes;
 }

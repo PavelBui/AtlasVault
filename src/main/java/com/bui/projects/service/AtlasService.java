@@ -1,6 +1,7 @@
 package com.bui.projects.service;
 
 import com.bui.projects.dto.AtlasDto;
+import com.bui.projects.dto.ImageDto;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface AtlasService {
     AtlasDto getAtlas(Integer id);
 
     List<AtlasDto> getAllAtlases();
+
+    void uploadImage(Integer id, ImageDto imageDto);
 }

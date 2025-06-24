@@ -25,5 +25,4 @@ public class AtlasDto {
     private String publisher;
     private String country;
     private Integer circulation;
-    private List<ImageDto> imageDtoList;
 }

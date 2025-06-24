@@ -1,7 +1,6 @@
 package com.bui.projects.mapper;
 
 import com.bui.projects.dto.AtlasDto;
-import com.bui.projects.dto.ImageDto;
 import com.bui.projects.entity.AtlasEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,6 @@ public class AtlasMapper {
 
     private PublisherMapper publisherMapper;
     private CountryMapper countryMapper;
-    private ImageMapper imageMapper;
 
     public AtlasEntity dtoToEntity(AtlasDto atlasDto) {
         AtlasEntity atlasEntity = new AtlasEntity();
@@ -31,7 +29,7 @@ public class AtlasMapper {
         //Country
         atlasEntity.setCountryEntity(countryMapper.dtoToEntity(atlasDto.getCountry()));
         //Images
-        atlasEntity.setImageEntities(imageMapper.dtoToEntity(atlasDto.getImageDtoList()));
+
         return atlasEntity;
     }
 
@@ -46,8 +44,6 @@ public class AtlasMapper {
                 .publisher(atlasEntity.getPublisherEntity().getName())
                 .country(atlasEntity.getCountryEntity().getName())
                 .circulation(atlasEntity.getCirculation())
-                .imageDtoList(atlasEntity.getImageEntities().stream()
-                        .map(entity -> new ImageDto(entity.getName(), entity.getPath())).toList())
                 .build();
     }
 }
