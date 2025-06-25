@@ -6,8 +6,7 @@ import com.bui.projects.service.AtlasService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,7 +31,7 @@ public class AtlasController {
         return ResponseEntity.ok(atlasService.createAtlas(atlasDto));
     }
 
-    @PostMapping("/{id}/images")
+    @PostMapping("/{id}/image")
     @ApiOperation("Upload Image")
     public ResponseEntity<String> uploadImage(@PathVariable Integer id, @RequestPart("file") MultipartFile file) {
         if (file.isEmpty()) {
@@ -69,6 +68,20 @@ public class AtlasController {
     @ApiOperation("Delete Atlas by id")
     public ResponseEntity<String> deleteAtlas(@PathVariable Integer id) {
         return ResponseEntity.ok(atlasService.deleteAtlas(id));
+    }
+
+    @GetMapping("/{id}/image/{imageId}")
+    @ApiOperation("Get image by imageId for Atlas by id")
+    public ResponseEntity<byte[]> getImage(@PathVariable Integer id, @PathVariable Integer imageId) {
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(atlasService.getImage(id, imageId).getImageBytes());
+    }
+
+    @GetMapping("/{id}/images")
+    @ApiOperation("Get all images for Atlas by id")
+    public ResponseEntity<List<ImageDto>> getAllImages(@PathVariable Integer id) {
+        return ResponseEntity.ok(atlasService.getAllImages(id));
     }
 
     @GetMapping("/{id}")

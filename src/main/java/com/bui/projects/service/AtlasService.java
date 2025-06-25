@@ -18,4 +18,8 @@ public interface AtlasService {
     List<AtlasDto> getAllAtlases();
 
     void uploadImage(Integer id, ImageDto imageDto);
+
+    ImageDto getImage(Integer atlasId, Integer imageId);
+
+    List<ImageDto> getAllImages(Integer id);
 }

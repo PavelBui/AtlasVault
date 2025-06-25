@@ -41,6 +41,6 @@ REST API that allows to manage atlases.
     "year": "integer",
     "country": "string",
     "publisher": "string",
-    "circulation": "integer",
+    "circulation": "integer"
 }
 ```
