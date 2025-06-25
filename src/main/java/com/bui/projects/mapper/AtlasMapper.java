@@ -2,8 +2,11 @@ package com.bui.projects.mapper;
 
 import com.bui.projects.dto.AtlasDto;
 import com.bui.projects.entity.AtlasEntity;
+import com.bui.projects.entity.ImageEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -28,8 +31,6 @@ public class AtlasMapper {
         atlasEntity.setPublisherEntity(publisherMapper.dtoToEntity(atlasDto.getPublisher()));
         //Country
         atlasEntity.setCountryEntity(countryMapper.dtoToEntity(atlasDto.getCountry()));
-        //Images
-
         return atlasEntity;
     }
 
@@ -44,6 +45,9 @@ public class AtlasMapper {
                 .publisher(atlasEntity.getPublisherEntity().getName())
                 .country(atlasEntity.getCountryEntity().getName())
                 .circulation(atlasEntity.getCirculation())
+                .imagesIds(atlasEntity.getImageEntities().stream()
+                        .map(ImageEntity::getId)
+                        .collect(Collectors.toList()))
                 .build();
     }
 }

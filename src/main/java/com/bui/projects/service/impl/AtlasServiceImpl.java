@@ -26,6 +26,7 @@ public class AtlasServiceImpl implements AtlasService {
     private ImageMapper imageMapper;
 
     @Override
+    @Transactional
     public AtlasDto createAtlas(AtlasDto atlasDto) {
         AtlasEntity atlasEntity = atlasMapper.dtoToEntity(atlasDto);
         atlasRepository.save(atlasEntity);
@@ -33,6 +34,7 @@ public class AtlasServiceImpl implements AtlasService {
     }
 
     @Override
+    @Transactional
     public AtlasDto updateAtlas(Integer id, AtlasDto atlasDto) {
         AtlasEntity atlasEntity = atlasRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new AtlasNotFoundException(id));
@@ -42,18 +44,21 @@ public class AtlasServiceImpl implements AtlasService {
     }
 
     @Override
+    @Transactional
     public String deleteAtlas(Integer id) {
 
         return "Atlas was deleted successfully";
     }
 
     @Override
+    @Transactional
     public AtlasDto getAtlas(Integer id) {
         return atlasMapper.entityToDto(atlasRepository.findByIdAndIsDeletedFalse(id)
                 .orElseThrow(() -> new AtlasNotFoundException((id))));
     }
 
     @Override
+    @Transactional
     public List<AtlasDto> getAllAtlases() {
         return atlasRepository.findAllByIsDeletedFalse().stream()
                 .map(entity -> atlasMapper.entityToDto(entity))
