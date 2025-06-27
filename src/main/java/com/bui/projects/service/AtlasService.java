@@ -1,21 +1,22 @@
 package com.bui.projects.service;
 
-import com.bui.projects.dto.AtlasDto;
+import com.bui.projects.dto.GetAtlasDto;
+import com.bui.projects.dto.ProvideAtlasDto;
 import com.bui.projects.dto.ImageDto;
 
 import java.util.List;
 
 public interface AtlasService {
 
-    AtlasDto createAtlas(AtlasDto taskDto);
+    GetAtlasDto createAtlas(ProvideAtlasDto taskDto);
 
-    AtlasDto updateAtlas(Integer id, AtlasDto atlasDto);
+    GetAtlasDto updateAtlas(Integer id, ProvideAtlasDto atlasDto);
 
     String deleteAtlas(Integer id);
 
-    AtlasDto getAtlas(Integer id);
+    GetAtlasDto getAtlas(Integer id);
 
-    List<AtlasDto> getAllAtlases();
+    List<GetAtlasDto> getAllAtlases();
 
     void uploadImage(Integer id, ImageDto imageDto);
 

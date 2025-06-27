@@ -1,6 +1,7 @@
 package com.bui.projects.controller;
 
-import com.bui.projects.dto.AtlasDto;
+import com.bui.projects.dto.GetAtlasDto;
+import com.bui.projects.dto.ProvideAtlasDto;
 import com.bui.projects.dto.ImageDto;
 import com.bui.projects.service.AtlasService;
 import io.swagger.annotations.Api;
@@ -26,8 +27,7 @@ public class AtlasController {
 
     @PostMapping
     @ApiOperation("Create Atlas")
-    public ResponseEntity<AtlasDto> createAtlas(@RequestBody AtlasDto atlasDto) {
-        atlasDto.setId(null);
+    public ResponseEntity<GetAtlasDto> createAtlas(@RequestBody ProvideAtlasDto atlasDto) {
         return ResponseEntity.ok(atlasService.createAtlas(atlasDto));
     }
 
@@ -58,8 +58,7 @@ public class AtlasController {
 
     @PutMapping("/{id}")
     @ApiOperation("Update Atlas by id")
-    public ResponseEntity<AtlasDto> updateAtlas(@PathVariable Integer id, @RequestBody AtlasDto atlasDto) {
-        atlasDto.setId(id);
+    public ResponseEntity<GetAtlasDto> updateAtlas(@PathVariable Integer id, @RequestBody ProvideAtlasDto atlasDto) {
         return ResponseEntity.ok(atlasService.updateAtlas(id, atlasDto));
     }
 
@@ -86,13 +85,13 @@ public class AtlasController {
 
     @GetMapping("/{id}")
     @ApiOperation("Get Atlas by id")
-    public ResponseEntity<AtlasDto> getAtlas(@PathVariable Integer id) {
+    public ResponseEntity<GetAtlasDto> getAtlas(@PathVariable Integer id) {
         return ResponseEntity.ok(atlasService.getAtlas(id));
     }
 
     @GetMapping
     @ApiOperation("Get list of all Atlases")
-    public ResponseEntity<List<AtlasDto>> getAllAtlases() {
+    public ResponseEntity<List<GetAtlasDto>> getAllAtlases() {
         return ResponseEntity.ok(atlasService.getAllAtlases());
     }
 

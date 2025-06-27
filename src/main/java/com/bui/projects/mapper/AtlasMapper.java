@@ -1,6 +1,7 @@
 package com.bui.projects.mapper;
 
-import com.bui.projects.dto.AtlasDto;
+import com.bui.projects.dto.GetAtlasDto;
+import com.bui.projects.dto.ProvideAtlasDto;
 import com.bui.projects.entity.AtlasEntity;
 import com.bui.projects.entity.ImageEntity;
 import lombok.AllArgsConstructor;
@@ -15,12 +16,12 @@ public class AtlasMapper {
     private PublisherMapper publisherMapper;
     private CountryMapper countryMapper;
 
-    public AtlasEntity dtoToEntity(AtlasDto atlasDto) {
+    public AtlasEntity dtoToEntity(ProvideAtlasDto atlasDto) {
         AtlasEntity atlasEntity = new AtlasEntity();
         return dtoToEntity(atlasEntity, atlasDto);
     }
 
-    public AtlasEntity dtoToEntity(AtlasEntity atlasEntity, AtlasDto atlasDto) {
+    public AtlasEntity dtoToEntity(AtlasEntity atlasEntity, ProvideAtlasDto atlasDto) {
         atlasEntity.setTitle(atlasDto.getTitle());
         atlasEntity.setTimePeriod(atlasDto.getTimePeriod());
         atlasEntity.setDescription(atlasDto.getDescription());
@@ -34,8 +35,8 @@ public class AtlasMapper {
         return atlasEntity;
     }
 
-    public AtlasDto entityToDto(AtlasEntity atlasEntity) {
-        return AtlasDto.builder()
+    public GetAtlasDto entityToDto(AtlasEntity atlasEntity) {
+        return GetAtlasDto.builder()
                 .id(atlasEntity.getId())
                 .title(atlasEntity.getTitle())
                 .timePeriod(atlasEntity.getTimePeriod())
