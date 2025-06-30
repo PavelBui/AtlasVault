@@ -12,6 +12,6 @@ public class PublisherMapper {
     private PublisherRepository publisherRepository;
 
     public PublisherEntity dtoToEntity(String publisherName) {
-        return publisherRepository.findByName(publisherName).orElse(new PublisherEntity(publisherName));
+        return publisherRepository.findByName(publisherName).orElseGet(() -> publisherRepository.save(new PublisherEntity(publisherName)));
     }
 }

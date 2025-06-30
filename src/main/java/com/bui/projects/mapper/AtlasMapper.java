@@ -7,7 +7,9 @@ import com.bui.projects.entity.ImageEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Component
 @AllArgsConstructor
@@ -36,6 +38,13 @@ public class AtlasMapper {
     }
 
     public GetAtlasDto entityToDto(AtlasEntity atlasEntity) {
+        List<Integer> imageIdList = new ArrayList<>();
+        Set<ImageEntity> imageEntitySet = atlasEntity.getImageEntities();
+        if (imageEntitySet != null) {
+            imageIdList = imageEntitySet.stream()
+                    .map(ImageEntity::getId)
+                    .toList();
+        }
         return GetAtlasDto.builder()
                 .id(atlasEntity.getId())
                 .title(atlasEntity.getTitle())
@@ -46,9 +55,7 @@ public class AtlasMapper {
                 .publisher(atlasEntity.getPublisherEntity().getName())
                 .country(atlasEntity.getCountryEntity().getName())
                 .circulation(atlasEntity.getCirculation())
-                .imagesIds(atlasEntity.getImageEntities().stream()
-                        .map(ImageEntity::getId)
-                        .collect(Collectors.toList()))
+                .imagesIds(imageIdList)
                 .build();
     }
 }

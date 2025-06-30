@@ -15,8 +15,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -47,7 +47,11 @@ public class AtlasServiceImpl implements AtlasService {
     @Override
     @Transactional
     public String deleteAtlas(Integer id) {
-
+        AtlasEntity atlasEntity = atlasRepository.findByIdAndIsDeletedFalse(id)
+                .orElseThrow(() -> new AtlasNotFoundException(id));
+        atlasEntity.setDeleted(true);
+        atlasEntity.setDeleteDate(LocalDateTime.now());
+        atlasRepository.save(atlasEntity);
         return "Atlas was deleted successfully";
     }
 
@@ -93,6 +97,6 @@ public class AtlasServiceImpl implements AtlasService {
                 .orElseThrow(() -> new AtlasNotFoundException((id)));
         return atlasEntity.getImageEntities().stream()
                 .map(entity -> imageMapper.entityToDto(entity))
-                .collect(Collectors.toList());
+                .toList();
     }
 }
