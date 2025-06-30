@@ -14,4 +14,8 @@ public class CountryMapper {
     public CountryEntity dtoToEntity(String countryName) {
         return countryRepository.findByName(countryName).orElseGet(() -> countryRepository.save(new CountryEntity(countryName)));
     }
+
+    public String entityToDto(CountryEntity countryEntity) {
+        return countryEntity.getName();
+    }
 }
