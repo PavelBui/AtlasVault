@@ -70,7 +70,7 @@ graph TD
   TC["Test session created by admin, and can be seen in<br>Tests catalogue by Examinees (only read test session<br>extended info"]:::noBorder-.->C(Created)
   TD["Test session was deactivated before<br>booking time started, or after booking<br>started but before anyone applied booking<br>(test session deactivation affects nobody)"]:::noBorder-.->D(Deactivated)
   TA["Test session booking time started, session can be seen in<br>catalogue. Examinees can book test session"]:::noBorder-.->A(Active)
-  TCL["Test session was manually deleted Before<br>test session start date by admin WITH active<br>booking inside or was automatically closed<br>by server"]:::noBorder-.->Cl(Closed)
+  TCL["Test session was manually deleted Before<br>test session start date by admin WITH active<br>booking inside or was automatically closed<br>by server"]:::noBorder-.->CL(Closed)
   TR["Test session booking time Expired. Test session Have<br>active bookings. No more bookings allowed, test session is<br>not more visible in catalogue"]:::noBorder-.->R(Ready)
   TS["Operator started interaction with test session entity from<br>Operator UI (started adding PC to the test session)"]:::noBorder-.->S(Started)
   TCI["Operator started adding Examines to the test session"]:::noBorder-.->CI(Check-In)
