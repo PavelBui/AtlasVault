@@ -93,6 +93,8 @@ graph TD
   CI-->IP;
   IP-->AC;
   IP-->F;
+  linkStyle 18 stroke:#ff0000, stroke-width:2px;
+  linkStyle 20 stroke:#ff0000, stroke-width:2px;
   classDef noBorder stroke-width:0,fill:transparent;
 ```
 
