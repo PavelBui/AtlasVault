@@ -47,10 +47,19 @@ REST API that allows to manage atlases.
 
 ## Test Mermaid
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-
+---
+title: Booking statuses
+---
+%%{init: {"theme": "default"}}%%
+graph TD
+  TA[Booking was created by Admission]:::noBorder-.->A(ACTIVE)
+  TI[Booking was deactivated or deleted by Admission]:::noBorder-.->I(INACTIVE)
+  TM[Examinee has not checked in before test session started]:::noBorder-.->M(MISSED)
+  TCI[Examinee has been successfully checked in to the test session]:::noBorder-.->CI(CHECKED_IN)
+  A-- Booking was deactivated or deleted by TestMe -->C(CLOSED);
+  A-->I;
+  A-->M;
+  A-->CI;
+  classDef noBorder stroke-width:0,fill:transparent;
+  class TA noBorder;
 ```
