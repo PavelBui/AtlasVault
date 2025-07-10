@@ -51,11 +51,11 @@ REST API that allows to manage atlases.
 title: Booking statuses
 ---
 graph TD
-  TA[Booking was created<br>by Admission]:::noBorder-.->A(ACTIVE)
-  TI[Booking was deactivated or<br>deleted by Admission]:::noBorder-.->I(INACTIVE)
-  TM[Examinee has not checked in<br>before test session started]:::noBorder-.->M(MISSED)
-  TCI[Examinee has been successfully<br>checked in to the test session]:::noBorder-.->CI(CHECKED_IN)
-  A-- Booking was deactivated or<br>deleted by TestMe -->C(CLOSED);
+  TA[Booking was created by Admission]:::noBorder-.->A(ACTIVE)
+  TI[Booking was deactivated or deleted by Admission]:::noBorder-.->I(INACTIVE)
+  TM[Examinee has not checked in before test session started]:::noBorder-.->M(MISSED)
+  TCI[Examinee has been successfully checked in to the test session]:::noBorder-.->CI(CHECKED_IN)
+  A-- Booking was deactivated or deleted by TestMe -->C(CLOSED);
   A-->I;
   A-->M;
   A-->CI;
