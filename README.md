@@ -93,6 +93,7 @@ graph TD
   CI-->IP;
   IP-->AC;
   IP-->F;
+  RA["Red arrows - if test session<br>was closed by cronjob at end of the day,<br>if test session WAS NOT started by operator manually"]:::noBorder
   linkStyle 18 stroke:#ff0000, stroke-width:2px;
   linkStyle 20 stroke:#ff0000, stroke-width:2px;
   classDef noBorder stroke-width:0,fill:transparent;
