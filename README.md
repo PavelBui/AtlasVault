@@ -44,3 +44,13 @@ REST API that allows to manage atlases.
     "circulation": "integer"
 }
 ```
+
+## Test Mermaid
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+
+```
