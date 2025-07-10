@@ -67,14 +67,14 @@ graph TD
 title: Test session statuses
 ---
 graph TD
-  TC["Test session created by admin, and can be seen in<br>Tests catalogue by Examinees (only read test session<br>extended info"]:::noBorder-.->C(Created)
-  TD["Test session was deactivated before<br>booking time started, or after booking<br>started but before anyone applied booking<br>(test session deactivation affects nobody)"]:::noBorder-.->D(Deactivated)
-  TA["Test session booking time started, session can be seen in<br>catalogue. Examinees can book test session"]:::noBorder-.->A(Active)
-  TCL["Test session was manually deleted Before<br>test session start date by admin WITH active<br>booking inside or was automatically closed<br>by server"]:::noBorder-.->CL(Closed)
-  TR["Test session booking time Expired. Test session Have<br>active bookings. No more bookings allowed, test session is<br>not more visible in catalogue"]:::noBorder-.->R(Ready)
-  TS["Operator started interaction with test session entity from<br>Operator UI (started adding PC to the test session)"]:::noBorder-.->S(Started)
+  TC["Test session created by admin, and can be seen in Tests catalogue by Examinees (only read test session extended info"]:::noBorder-.->C(Created)
+  TD["Test session was deactivated before booking time started, or after booking started but before anyone applied booking (test session deactivation affects nobody)"]:::noBorder-.->D(Deactivated)
+  TA["Test session booking time started, session can be seen in catalogue. Examinees can book test session"]:::noBorder-.->A(Active)
+  TCL["Test session was manually deleted Before test session start date by admin WITH active booking inside or was automatically closed by server"]:::noBorder-.->CL(Closed)
+  TR["Test session booking time Expired. Test session Have active bookings. No more bookings allowed, test session is not more visible in catalogue"]:::noBorder-.->R(Ready)
+  TS["Operator started interaction with test session entity from Operator UI (started adding PC to the test session)"]:::noBorder-.->S(Started)
   TCI["Operator started adding Examines to the test session"]:::noBorder-.->CI(Check-In)
-  TST["Test session was manually terminated by<br>Operator (for Example massive technical<br>issue)"]:::noBorder-.->ST(Stopped)
+  TST["Test session was manually terminated by Operator (for Example massive technical issue)"]:::noBorder-.->ST(Stopped)
   TIP["Test itself was started"]:::noBorder-.->IP(In-progress)
   TAC["Test was finished by cronjob"]:::noBorder-.->AC(Autoclossed)
   TF["Test was finished by operator"]:::noBorder-.->F(Finished)
@@ -93,7 +93,7 @@ graph TD
   CI-->IP;
   IP-->AC;
   IP-->F;
-  RA["Red arrows - if test session<br>was closed by cronjob at end of the day,<br>if test session WAS NOT started by operator manually"]:::noBorder
+  RA["Red arrows - if test session was closed by cronjob at end of the day, if test session WAS NOT started by operator manually"]:::noBorder
   linkStyle 18 stroke:#ff0000, stroke-width:2px;
   linkStyle 20 stroke:#ff0000, stroke-width:2px;
   classDef noBorder stroke-width:0,fill:transparent;
@@ -104,12 +104,12 @@ graph TD
 title: Test results statuses
 ---
 graph TD
-  TTRC[Test session was<br>closed by operator<br>because of cheating]:::noBorder-.->TRC(TEST_RESULT_CHEATING)
-  TTRI[TEst session was<br>closed by operator<br>because of tech. issue]:::noBorder-.->TRI(TEST_RESULT_ISSUE)
-  TP[Test session is still in<br>progress, no test<br>results can be found]:::noBorder-.->P(Pending)
-  TPa["Test session was<br>completed (as process)"]:::noBorder-.->Pa(Pass)
-  TF["Test session was failed<br>(as process)"]:::noBorder-.->F(Failed)
-  P-- "Test result expired by<br>timeout (4 hours)" -->E(Expired);
+  TTRC[Test session was closed by operator because of cheating]:::noBorder-.->TRC(TEST_RESULT_CHEATING)
+  TTRI[TEst session was closed by operator because of tech. issue]:::noBorder-.->TRI(TEST_RESULT_ISSUE)
+  TP[Test session is still in progress, no test results can be found]:::noBorder-.->P(Pending)
+  TPa["Test session was completed (as process)"]:::noBorder-.->Pa(Pass)
+  TF["Test session was failed (as process)"]:::noBorder-.->F(Failed)
+  P-- "Test result expired by timeout (4 hours)" -->E(Expired);
   P-->Pa;
   P-->F;
   classDef noBorder stroke-width:0,fill:transparent;
