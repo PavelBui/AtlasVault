@@ -75,7 +75,7 @@ graph TD
   TS["Operator started interaction with test session entity from<br>Operator UI (started adding PC to the test session)"]:::noBorder-.->S(Started)
   TCI["Operator started adding Examines to the test session"]:::noBorder-.->CI(Check-In)
   TST["Test session was manually terminated by<br>Operator (for Example massive technical<br>issue)"]:::noBorder-.->ST(Stopped)
-  TIP["Test itself was started"]:::noBorder-.->IT(In-progress)
+  TIP["Test itself was started"]:::noBorder-.->IP(In-progress)
   TAC["Test was finished by cronjob"]:::noBorder-.->AC(Autoclossed)
   TF["Test was finished by operator"]:::noBorder-.->F(Finished)
   C-->D;
