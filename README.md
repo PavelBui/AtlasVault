@@ -50,7 +50,6 @@ REST API that allows to manage atlases.
 ---
 title: Booking statuses
 ---
-%%{init: {"theme": "default"}}%%
 graph TD
   TA[Booking was created by Admission]:::noBorder-.->A(ACTIVE)
   TI[Booking was deactivated or deleted by Admission]:::noBorder-.->I(INACTIVE)
