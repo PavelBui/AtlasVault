@@ -51,11 +51,12 @@ REST API that allows to manage atlases.
 title: Booking statuses
 ---
 graph TD
-  TA[Booking was created by Admission]:::noBorder-.->A(ACTIVE)
-  TI[Booking was deactivated or deleted by Admission]:::noBorder-.->I(INACTIVE)
-  TM[Examinee has not checked in before test session started]:::noBorder-.->M(MISSED)
-  TCI[Examinee has been successfully checked in to the test session]:::noBorder-.->CI(CHECKED_IN)
-  A-- Booking was deactivated or deleted by TestMe -->C(CLOSED);
+  TA[Booking was created by Admission]:::noBorder-.-A(ACTIVE)
+  TI[Booking was deactivated or deleted by Admission]:::noBorder-.-I(INACTIVE)
+  TM[Examinee has not checked in before test session started]:::noBorder-.-M(MISSED)
+  TCI[Examinee has been successfully checked in to the test session]:::noBorder-.-CI(CHECKED_IN)
+  TC[Booking was deactivated or deleted by TestMe]:::noBorder-.-C(CLOSED)
+  A-->C;
   A-->I;
   A-->M;
   A-->CI;
@@ -121,7 +122,7 @@ title: Dependency
 ---
 graph TD
   subgraph Booking
-    AB(Active)-- Booking was deactivated or deleted by TestMe -->CB(Closed);
+    AB(Active)-->CB(Closed);
     AB-->IB(Inactive);
     AB-->MB(Missed);
     AB-->CIB(Checked-in);
@@ -142,9 +143,10 @@ graph TD
     CITS-->IPTS(In-progress);
     IPTS-->ACTS(Autoclossed);
     IPTS-->FTS(Finished);
-  end  
+  end
   ATS-.->AB
-  CTS-.->CB
+  CLTS-.->CB
+  CITS-.->CIB
   IPTS-.->MB
   classDef noBorder stroke-width:0,fill:transparent;
 ```
