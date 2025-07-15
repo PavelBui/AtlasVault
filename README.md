@@ -114,3 +114,52 @@ graph TD
   P-->F;
   classDef noBorder stroke-width:0,fill:transparent;
 ```
+
+```mermaid
+---
+title: Dependency
+---
+graph TD
+  subgraph Booking
+    AB(Active)-- Booking was deactivated or deleted by TestMe -->CB(Closed);
+    AB-->IB(Inactive);
+    AB-->MB(Missed);
+    AB-->CIB(Checked-in);
+  end
+  subgraph Test session
+    CTS(Created)-->DTS(Deactivated);
+    CTS-->ATS(Active);
+    ATS-->DTS;
+    ATS-->CLTS(Closed);
+    ATS-->RTS(Ready);
+    RTS-->CLTS;
+    RTS-->STS(Started);
+    STS-->CLTS;
+    STS-->CITS(Check-In);
+    CITS-->CLTS;
+    STS-->STTS(Stopped);
+    CITS-->STTS;
+    CITS-->IPTS(In-progress);
+    IPTS-->ACTS(Autoclossed);
+    IPTS-->FTS(Finished);
+  end  
+  ATS-.->AB
+  CTS-.->CB
+  IPTS-.->MB
+  classDef noBorder stroke-width:0,fill:transparent;
+```
+
+
+```mermaid
+zenuml
+  title Success workflow
+  @Actor Admin
+  @Actor Operator
+  @Actor Examinee
+  @API Booking_API
+  Admin_UI_API
+  Operator_UI_API
+  Desktop_Client_API
+  TestMe
+  Admin->Admin_UI_API: Create Test Center
+```
