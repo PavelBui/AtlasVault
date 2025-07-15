@@ -154,12 +154,7 @@ graph TD
 zenuml
   title Success workflow
   @Actor Admin
-  @Actor Operator
-  @Actor Examinee
-  @API Booking_API
   Admin_UI_API
-  Operator_UI_API
-  Desktop_Client_API
   TestMe
   Admin->Admin_UI_API: Create Test Center
 ```
