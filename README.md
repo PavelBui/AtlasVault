@@ -151,10 +151,26 @@ graph TD
 
 
 ```mermaid
-zenuml
-  title Success workflow
-  @Actor Admin
-  Admin_UI_API
-  TestMe
-  Admin->Admin_UI_API: Create Test Center
+sequenceDiagram
+  Admin->>Admin UI API: Create Test Center
+  Admin UI API->>TestMe: PUSH center/DTO
+  Admin->>Admin UI API: Create Room
+  Admin UI API->>TestMe: PUSH room/DTO
+  Admin->>Admin UI API: Create Test
+  Admin UI API->>TestMe: PUSH test/DTO
+  TestMe->>Examinator: Get tests
+  Admin->>Admin UI API: Create Test Session
+  Admin UI API->>TestMe: PUSH testSession/DTO
+  TestMe->>TestMe: Activate Test Session
+  Examinee->>Admission: Create Booking
+  Admission->>TestMe: PUSH booking/DTO
+  TestMe->>TestMe: Test Session is Ready
+  TestMe->>TestMe: Test Session Ready to Start  
+  Operator->>Operator UI API: Check-In Examinee
+  Operator UI API->>TestMe: Check-In Examinee
+  Operator->>Operator UI API: Start Test Session
+  Operator UI API->>TestMe: Start Test Session
+  Examinee->>Desktop Client API: Check-In
+  Desktop Client API->>TestMe: Check-In
+  TestMe->>TestMe: Test Session is Finished
 ```
